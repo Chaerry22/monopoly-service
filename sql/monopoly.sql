@@ -29,22 +29,22 @@ CREATE TABLE PlayerGame (
 	score integer
 	);
 
-Create TABLE Property (
-	ID integer PRIMARY KEY,
-	playerID integer REFERENCES Player(ID),
-	propertyName varchar(50),
-	groupColor varchar(50),
-	price integer,
-	rent integer,
-	mortgage integer,
-	);
+-- Create TABLE Property (
+-- 	ID integer PRIMARY KEY,
+-- 	playerID integer REFERENCES Player(ID),
+-- 	propertyName varchar(50),
+-- 	groupColor varchar(50),
+-- 	price integer,
+-- 	rent integer,
+-- 	mortgage integer,
+-- 	);
 
 
 -- Allow users to select data from the tables.
 GRANT SELECT ON Game TO PUBLIC;
 GRANT SELECT ON Player TO PUBLIC;
 GRANT SELECT ON PlayerGame TO PUBLIC;
-GRANT SELECT ON Property TO PUBLIC;
+-- GRANT SELECT ON Property TO PUBLIC;
 
 -- Add sample records.
 INSERT INTO Game VALUES (1, '2006-06-27 08:00:00');
@@ -64,5 +64,5 @@ INSERT INTO PlayerGame VALUES (2, 3, 500.00);
 INSERT INTO PlayerGame VALUES (3, 2, 0.00);
 INSERT INTO PlayerGame VALUES (3, 3, 5500.00);
 
-INSERT INTO Property VALUES (1, 1, 'Park Place', 'Blue', 350, 60, 175);
-INSERT INTO Property VALUES (2, 1, 'Boardwalk', 'Blue', 400, 50, 200);
+-- INSERT INTO Property VALUES (1, 1, 'Park Place', 'Blue', 350, 60, 175);
+-- INSERT INTO Property VALUES (2, 1, 'Boardwalk', 'Blue', 400, 50, 200);
