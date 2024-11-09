@@ -52,9 +52,11 @@ router.use(express.json());
 router.get('/', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
+router.get('/player-games', readPlayerGames);
 router.put('/players/:id', updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
+
 
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -120,6 +122,23 @@ function deletePlayer(req, res, next) {
       returnDataOr404(res, data);
     })
     .catch((err) => {
+      next(err);
+    });
+}
+
+function readPlayerGames(req, res, next) {
+  const query = `
+    SELECT p.id AS player_id, p.name AS player_name, g.id AS game_id, g.name AS game_name
+    FROM Player p
+    JOIN Game g ON p.id = g.player_id
+  `;
+  
+  db.many(query)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.error(err); // Log the error
       next(err);
     });
 }
