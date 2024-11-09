@@ -74,13 +74,14 @@ function readHelloMessage(req, res) {
 }
 
 function readPlayers(req, res, next) {
-  db.many('SELECT * FROM Player')
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      next(err);
-    });
+  // db.many('SELECT * FROM Player')
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     next(err);
+  //   });
+  res.send('Players here');
 }
 
 function readPlayer(req, res, next) {
